@@ -4,12 +4,14 @@ data Nat : Set where
   Z : Nat
   S : Nat → Nat
 
+{-# BUILTIN NATURAL Nat #-}
+
 module DerivingSystem-Nat where
   data _plus_is_ : Nat → Nat → Nat → Set where
-    P-ZERO : (n : Nat) → Z plus n is n
+    P-ZERO : (n : Nat) → 0 plus n is n
     P-SUCC : (n₁ n₂ n₃ : Nat) → n₁ plus n₂ is n₃ → S n₁ plus n₂ is S n₃
   data _times_is_ : Nat → Nat → Nat → Set where
-    T-ZERO : (n : Nat) → Z times n is Z
+    T-ZERO : (n : Nat) → 0 times n is 0
     T-SUCC : (n₁ n₂ n₃ n₄ : Nat) → n₁ times n₂ is n₃ → n₂ plus n₃ is n₄ → S n₁ times n₂ is n₄
 
 module DerivingSystem-CompareNat1 where
